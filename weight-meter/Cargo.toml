@@ -1,0 +1,37 @@
+[package]
+name = "orml-weight-meter"
+version = "0.4.1-dev"
+license = "Apache-2.0"
+authors = ["Laminar Developers <hello@laminar.one>"]
+edition = "2021"
+
+[package.metadata.docs.rs]
+targets = ["x86_64-unknown-linux-gnu"]
+
+[dependencies]
+scale-info = { version = "1.0", default-features = false, features = ["derive"] }
+frame-support = { git = "https://github.com/purestake/substrate", branch = "moonbeam-polkadot-v0.9.17", default-features = false }
+weight-meter-procedural = { path = "weight-meter-procedural", default-features = false }
+orml-bencher = { path = "../bencher" }
+
+[dev-dependencies]
+serde = { version = "1.0.124" }
+codec = { package = "parity-scale-codec", version = "2.3.1" }
+sp-runtime = { git = "https://github.com/purestake/substrate", branch = "moonbeam-polkadot-v0.9.17" }
+sp-io = { git = "https://github.com/purestake/substrate", branch = "moonbeam-polkadot-v0.9.17" }
+sp-std = { git = "https://github.com/purestake/substrate", branch = "moonbeam-polkadot-v0.9.17" }
+
+frame-support = { git = "https://github.com/purestake/substrate", branch = "moonbeam-polkadot-v0.9.17"}
+frame-system = { git = "https://github.com/purestake/substrate", branch = "moonbeam-polkadot-v0.9.17" }
+pallet-balances = { git = "https://github.com/purestake/substrate", branch = "moonbeam-polkadot-v0.9.17" }
+
+[features]
+default = ["std"]
+std = [
+	"scale-info/std",
+	"frame-support/std",
+	"weight-meter-procedural/std",
+]
+bench = [
+	"weight-meter-procedural/bench",
+]
