@@ -4,7 +4,7 @@
 [![codecov](https://codecov.io/gh/open-web3-stack/open-runtime-module-library/branch/master/graph/badge.svg?token=FZ4HZYMW9A)](https://codecov.io/gh/open-web3-stack/open-runtime-module-library)
 [![GitHub](https://img.shields.io/github/license/open-web3-stack/open-runtime-module-library)](https://github.com/open-web3-stack/open-runtime-module-library/blob/master/LICENSE)
 
-The Open Runtime Module Library (ORML) is a community maintained collection of Substrate runtime modules.
+The Open Runtime Module Library (ORML) is a community maintained collection of Axlib runtime modules.
 
 ## Runtime Modules Overview
 
@@ -30,7 +30,7 @@ The Open Runtime Module Library (ORML) is a community maintained collection of S
 	- Provides traits, types, and implementations to support XCM integration.
 - [orml-xtokens](./xtokens)
 	- Provides way to do cross-chain assets transfer.
-	- [Step-by-Step guide](https://github.com/open-web3-stack/open-runtime-module-library/wiki/xtokens) to make XCM cross-chain fungible asset transfer available on your parachain
+	- [Step-by-Step guide](https://github.com/open-web3-stack/open-runtime-module-library/wiki/xtokens) to make XCM cross-chain fungible asset transfer available on your allychain
 
 ## Example
 
@@ -70,7 +70,7 @@ _In alphabetical order_
 - [GameDAO Protocol](https://github.com/gamedaoco)
 - [HydraDX](https://github.com/galacticcouncil/hack.HydraDX-node)
 - [Interlay and Kintsugi](https://github.com/interlay/interbtc)
-- [KodaDot: MetaPrime Network](https://github.com/kodadot/metaprime.network) 
+- [KodaAxc: MetaPrime Network](https://github.com/kodaaxc/metaprime.network) 
 - [Laminar Chain](https://github.com/laminar-protocol/laminar-chain)
 - [Listen](https://github.com/listenofficial)
 - [Manta Network](https://github.com/Manta-Network)

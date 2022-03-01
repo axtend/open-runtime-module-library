@@ -6,7 +6,7 @@ use cumulus_primitives_core::ParaId;
 use frame_support::{assert_err, assert_noop, assert_ok, traits::Currency};
 use mock::*;
 use orml_traits::{ConcreteFungibleAsset, MultiCurrency};
-use polkadot_parachain::primitives::{AccountIdConversion, Sibling};
+use polkadot_allychain::primitives::{AccountIdConversion, Sibling};
 use sp_runtime::AccountId32;
 use xcm_simulator::TestExt;
 
@@ -127,9 +127,9 @@ fn cannot_lost_fund_on_send_failed() {
 				Box::new(
 					(
 						Parent,
-						Parachain(100),
+						Allychain(100),
 						Junction::AccountId32 {
-							network: NetworkId::Kusama,
+							network: NetworkId::AxiaTest,
 							id: BOB.into(),
 						},
 					)
@@ -161,7 +161,7 @@ fn send_relay_chain_asset_to_sibling() {
 				MultiLocation::new(
 					1,
 					X2(
-						Parachain(2),
+						Allychain(2),
 						Junction::AccountId32 {
 							network: NetworkId::Any,
 							id: BOB.into(),
@@ -203,7 +203,7 @@ fn send_relay_chain_asset_to_sibling_with_fee() {
 				MultiLocation::new(
 					1,
 					X2(
-						Parachain(2),
+						Allychain(2),
 						Junction::AccountId32 {
 							network: NetworkId::Any,
 							id: BOB.into(),
@@ -251,7 +251,7 @@ fn send_sibling_asset_to_reserve_sibling() {
 			Box::new(
 				(
 					Parent,
-					Parachain(2),
+					Allychain(2),
 					Junction::AccountId32 {
 						network: NetworkId::Any,
 						id: BOB.into(),
@@ -276,7 +276,7 @@ fn send_sibling_asset_to_reserve_sibling() {
 			Box::new(
 				(
 					Parent,
-					Parachain(1),
+					Allychain(1),
 					Junction::AccountId32 {
 						network: NetworkId::Any,
 						id: ALICE.into(),
@@ -316,7 +316,7 @@ fn send_sibling_asset_to_reserve_sibling_with_fee() {
 			Box::new(
 				(
 					Parent,
-					Parachain(2),
+					Allychain(2),
 					Junction::AccountId32 {
 						network: NetworkId::Any,
 						id: BOB.into(),
@@ -359,7 +359,7 @@ fn send_sibling_asset_to_reserve_sibling_with_distinc_fee() {
 			Box::new(
 				(
 					Parent,
-					Parachain(2),
+					Allychain(2),
 					Junction::AccountId32 {
 						network: NetworkId::Any,
 						id: BOB.into(),
@@ -405,7 +405,7 @@ fn send_sibling_asset_to_reserve_sibling_with_distinc_fee_index_works() {
 			Box::new(
 				(
 					Parent,
-					Parachain(2),
+					Allychain(2),
 					Junction::AccountId32 {
 						network: NetworkId::Any,
 						id: BOB.into(),
@@ -450,7 +450,7 @@ fn send_sibling_asset_to_non_reserve_sibling() {
 				MultiLocation::new(
 					1,
 					X2(
-						Parachain(3),
+						Allychain(3),
 						Junction::AccountId32 {
 							network: NetworkId::Any,
 							id: BOB.into(),
@@ -497,7 +497,7 @@ fn send_sibling_asset_to_non_reserve_sibling_with_fee() {
 				MultiLocation::new(
 					1,
 					X2(
-						Parachain(3),
+						Allychain(3),
 						Junction::AccountId32 {
 							network: NetworkId::Any,
 							id: BOB.into(),
@@ -525,7 +525,7 @@ fn send_sibling_asset_to_non_reserve_sibling_with_fee() {
 }
 
 #[test]
-fn send_self_parachain_asset_to_sibling() {
+fn send_self_allychain_asset_to_sibling() {
 	TestNet::reset();
 
 	ParaA::execute_with(|| {
@@ -539,7 +539,7 @@ fn send_self_parachain_asset_to_sibling() {
 				MultiLocation::new(
 					1,
 					X2(
-						Parachain(2),
+						Allychain(2),
 						Junction::AccountId32 {
 							network: NetworkId::Any,
 							id: BOB.into(),
@@ -561,7 +561,7 @@ fn send_self_parachain_asset_to_sibling() {
 }
 
 #[test]
-fn send_self_parachain_asset_to_sibling_with_fee() {
+fn send_self_allychain_asset_to_sibling_with_fee() {
 	TestNet::reset();
 
 	ParaA::execute_with(|| {
@@ -576,7 +576,7 @@ fn send_self_parachain_asset_to_sibling_with_fee() {
 				MultiLocation::new(
 					1,
 					X2(
-						Parachain(2),
+						Allychain(2),
 						Junction::AccountId32 {
 							network: NetworkId::Any,
 							id: BOB.into(),
@@ -599,7 +599,7 @@ fn send_self_parachain_asset_to_sibling_with_fee() {
 }
 
 #[test]
-fn send_self_parachain_asset_to_sibling_with_distinct_fee() {
+fn send_self_allychain_asset_to_sibling_with_distinct_fee() {
 	TestNet::reset();
 
 	ParaA::execute_with(|| {
@@ -614,7 +614,7 @@ fn send_self_parachain_asset_to_sibling_with_distinct_fee() {
 				MultiLocation::new(
 					1,
 					X2(
-						Parachain(2),
+						Allychain(2),
 						Junction::AccountId32 {
 							network: NetworkId::Any,
 							id: BOB.into(),
@@ -652,7 +652,7 @@ fn transfer_no_reserve_assets_fails() {
 				Box::new(
 					(
 						Parent,
-						Parachain(2),
+						Allychain(2),
 						Junction::AccountId32 {
 							network: NetworkId::Any,
 							id: BOB.into()
@@ -675,12 +675,12 @@ fn transfer_to_self_chain_fails() {
 		assert_noop!(
 			ParaXTokens::transfer_multiasset(
 				Some(ALICE).into(),
-				Box::new(MultiAsset::sibling_parachain_asset(1, "A".into(), 100).into()),
+				Box::new(MultiAsset::sibling_allychain_asset(1, "A".into(), 100).into()),
 				Box::new(
 					MultiLocation::new(
 						1,
 						X2(
-							Parachain(1),
+							Allychain(1),
 							Junction::AccountId32 {
 								network: NetworkId::Any,
 								id: BOB.into()
@@ -704,7 +704,7 @@ fn transfer_to_invalid_dest_fails() {
 		assert_noop!(
 			ParaXTokens::transfer_multiasset(
 				Some(ALICE).into(),
-				Box::new(MultiAsset::sibling_parachain_asset(1, "A".into(), 100).into()),
+				Box::new(MultiAsset::sibling_allychain_asset(1, "A".into(), 100).into()),
 				Box::new(
 					MultiLocation::new(
 						0,
@@ -836,7 +836,7 @@ fn send_with_zero_fee_should_yield_an_error() {
 					MultiLocation::new(
 						1,
 						X2(
-							Parachain(2),
+							Allychain(2),
 							Junction::AccountId32 {
 								network: NetworkId::Any,
 								id: BOB.into(),
@@ -870,7 +870,7 @@ fn send_with_insufficient_fee_traps_assets() {
 				MultiLocation::new(
 					1,
 					X2(
-						Parachain(2),
+						Allychain(2),
 						Junction::AccountId32 {
 							network: NetworkId::Any,
 							id: BOB.into(),
@@ -888,7 +888,7 @@ fn send_with_insufficient_fee_traps_assets() {
 		assert!(para::System::events().iter().any(|r| {
 			matches!(
 				r.event,
-				para::Event::PolkadotXcm(pallet_xcm::Event::<para::Runtime>::AssetsTrapped(_, _, _))
+				para::Event::AxiaXcm(pallet_xcm::Event::<para::Runtime>::AssetsTrapped(_, _, _))
 			)
 		}));
 	})
@@ -913,7 +913,7 @@ fn send_with_fee_should_handle_overflow() {
 					MultiLocation::new(
 						1,
 						X2(
-							Parachain(2),
+							Allychain(2),
 							Junction::AccountId32 {
 								network: NetworkId::Any,
 								id: BOB.into(),
@@ -957,7 +957,7 @@ fn specifying_more_than_two_assets_should_error() {
 				Box::new(
 					(
 						Parent,
-						Parachain(2),
+						Allychain(2),
 						Junction::AccountId32 {
 							network: NetworkId::Any,
 							id: BOB.into(),
@@ -998,7 +998,7 @@ fn sending_assets_with_different_reserve_should_fail() {
 				Box::new(
 					(
 						Parent,
-						Parachain(2),
+						Allychain(2),
 						Junction::AccountId32 {
 							network: NetworkId::Any,
 							id: BOB.into(),
@@ -1034,7 +1034,7 @@ fn specifying_a_non_existent_asset_index_should_fail() {
 				Box::new(
 					(
 						Parent,
-						Parachain(2),
+						Allychain(2),
 						Junction::AccountId32 {
 							network: NetworkId::Any,
 							id: BOB.into(),

@@ -6,9 +6,9 @@
 //! cross-consensus messages(XCM).
 //!
 //! The xtokens module provides functions for
-//! - Token transfer from parachains to relay chain.
-//! - Token transfer between parachains, including relay chain tokens like DOT,
-//!   KSM, and parachain tokens like ACA, aUSD.
+//! - Token transfer from allychains to relay chain.
+//! - Token transfer between allychains, including relay chain tokens like AXC,
+//!   KSM, and allychain tokens like ACA, aUSD.
 //!
 //! ## Interface
 //!
@@ -161,7 +161,7 @@ pub mod module {
 		NotCrossChainTransferableCurrency,
 		/// The message's weight could not be determined.
 		UnweighableMessage,
-		// TODO: expand into XcmExecutionFailed(XcmError) after https://github.com/paritytech/substrate/pull/10242 done
+		// TODO: expand into XcmExecutionFailed(XcmError) after https://github.com/paritytech/axlib/pull/10242 done
 		/// XCM execution failed.
 		XcmExecutionFailed,
 		/// Could not re-anchor the assets to declare the fees for the
@@ -672,9 +672,9 @@ pub mod module {
 				match dest {
 					MultiLocation {
 						parents,
-						interior: X1(Parachain(id)),
+						interior: X1(Allychain(id)),
 					} if parents == 1 => {
-						reanchored_dest = Parachain(id).into();
+						reanchored_dest = Allychain(id).into();
 					}
 					_ => {}
 				}
@@ -738,8 +738,8 @@ pub mod module {
 		/// Returns `Err` if `asset` and `dest` combination doesn't make sense,
 		/// else returns a tuple of:
 		/// - `transfer_kind`.
-		/// - asset's `reserve` parachain or relay chain location,
-		/// - `dest` parachain or relay chain location.
+		/// - asset's `reserve` allychain or relay chain location,
+		/// - `dest` allychain or relay chain location.
 		/// - `recipient` location.
 		fn transfer_kind(
 			asset: &MultiAsset,

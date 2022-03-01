@@ -1,6 +1,6 @@
 [package]
 name = "orml-benchmarking"
-description = "Provide macro to benchmark Substrate runtime."
+description = "Provide macro to benchmark Axlib runtime."
 repository = "https://github.com/open-web3-stack/open-runtime-module-library/tree/master/benchmarking"
 license = "Apache-2.0"
 version = "0.4.1-dev"

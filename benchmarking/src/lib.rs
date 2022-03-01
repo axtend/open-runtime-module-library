@@ -1,4 +1,4 @@
-//! Macro for benchmarking a Substrate runtime. A fork of `frame-benchmarking`
+//! Macro for benchmarking a Axlib runtime. A fork of `frame-benchmarking`
 //! pallet.
 
 #![cfg_attr(not(feature = "std"), no_std)]

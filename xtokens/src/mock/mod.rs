@@ -8,7 +8,7 @@ use serde::{Deserialize, Serialize};
 use sp_io::TestExternalities;
 use sp_runtime::AccountId32;
 
-use xcm_simulator::{decl_test_network, decl_test_parachain, decl_test_relay_chain};
+use xcm_simulator::{decl_test_network, decl_test_allychain, decl_test_relay_chain};
 
 pub mod para;
 pub mod relay;
@@ -21,13 +21,13 @@ pub const BOB: AccountId32 = AccountId32::new([1u8; 32]);
 pub enum CurrencyId {
 	/// Relay chain token.
 	R,
-	/// Parachain A token.
+	/// Allychain A token.
 	A,
-	/// Parachain A A1 token.
+	/// Allychain A A1 token.
 	A1,
-	/// Parachain B token.
+	/// Allychain B token.
 	B,
-	/// Parachain B B1 token
+	/// Allychain B B1 token
 	B1,
 }
 
@@ -36,10 +36,10 @@ impl Convert<CurrencyId, Option<MultiLocation>> for CurrencyIdConvert {
 	fn convert(id: CurrencyId) -> Option<MultiLocation> {
 		match id {
 			CurrencyId::R => Some(Parent.into()),
-			CurrencyId::A => Some((Parent, Parachain(1), GeneralKey("A".into())).into()),
-			CurrencyId::A1 => Some((Parent, Parachain(1), GeneralKey("A1".into())).into()),
-			CurrencyId::B => Some((Parent, Parachain(2), GeneralKey("B".into())).into()),
-			CurrencyId::B1 => Some((Parent, Parachain(2), GeneralKey("B1".into())).into()),
+			CurrencyId::A => Some((Parent, Allychain(1), GeneralKey("A".into())).into()),
+			CurrencyId::A1 => Some((Parent, Allychain(1), GeneralKey("A1".into())).into()),
+			CurrencyId::B => Some((Parent, Allychain(2), GeneralKey("B".into())).into()),
+			CurrencyId::B1 => Some((Parent, Allychain(2), GeneralKey("B1".into())).into()),
 		}
 	}
 }
@@ -54,10 +54,10 @@ impl Convert<MultiLocation, Option<CurrencyId>> for CurrencyIdConvert {
 		}
 		match l {
 			MultiLocation { parents, interior } if parents == 1 => match interior {
-				X2(Parachain(1), GeneralKey(k)) if k == a => Some(CurrencyId::A),
-				X2(Parachain(1), GeneralKey(k)) if k == a1 => Some(CurrencyId::A1),
-				X2(Parachain(2), GeneralKey(k)) if k == b => Some(CurrencyId::B),
-				X2(Parachain(2), GeneralKey(k)) if k == b1 => Some(CurrencyId::B1),
+				X2(Allychain(1), GeneralKey(k)) if k == a => Some(CurrencyId::A),
+				X2(Allychain(1), GeneralKey(k)) if k == a1 => Some(CurrencyId::A1),
+				X2(Allychain(2), GeneralKey(k)) if k == b => Some(CurrencyId::B),
+				X2(Allychain(2), GeneralKey(k)) if k == b1 => Some(CurrencyId::B1),
 				_ => None,
 			},
 			MultiLocation { parents, interior } if parents == 0 => match interior {
@@ -88,7 +88,7 @@ impl Convert<MultiAsset, Option<CurrencyId>> for CurrencyIdConvert {
 pub type Balance = u128;
 pub type Amount = i128;
 
-decl_test_parachain! {
+decl_test_allychain! {
 	pub struct ParaA {
 		Runtime = para::Runtime,
 		XcmpMessageHandler = para::XcmpQueue,
@@ -97,7 +97,7 @@ decl_test_parachain! {
 	}
 }
 
-decl_test_parachain! {
+decl_test_allychain! {
 	pub struct ParaB {
 		Runtime = para::Runtime,
 		XcmpMessageHandler = para::XcmpQueue,
@@ -106,7 +106,7 @@ decl_test_parachain! {
 	}
 }
 
-decl_test_parachain! {
+decl_test_allychain! {
 	pub struct ParaC {
 		Runtime = para::Runtime,
 		XcmpMessageHandler = para::XcmpQueue,
@@ -126,7 +126,7 @@ decl_test_relay_chain! {
 decl_test_network! {
 	pub struct TestNet {
 		relay_chain = Relay,
-		parachains = vec![
+		allychains = vec![
 			(1, ParaA),
 			(2, ParaB),
 			(3, ParaC),
@@ -145,10 +145,10 @@ pub fn para_ext(para_id: u32) -> TestExternalities {
 		.build_storage::<Runtime>()
 		.unwrap();
 
-	let parachain_info_config = parachain_info::GenesisConfig {
-		parachain_id: para_id.into(),
+	let allychain_info_config = allychain_info::GenesisConfig {
+		allychain_id: para_id.into(),
 	};
-	<parachain_info::GenesisConfig as GenesisBuild<Runtime, _>>::assimilate_storage(&parachain_info_config, &mut t)
+	<allychain_info::GenesisConfig as GenesisBuild<Runtime, _>>::assimilate_storage(&allychain_info_config, &mut t)
 		.unwrap();
 
 	orml_tokens::GenesisConfig::<Runtime> {

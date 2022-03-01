@@ -3,25 +3,25 @@ use xcm::latest::prelude::*;
 
 pub trait Parse {
 	/// Returns the "chain" location part. It could be parent, sibling
-	/// parachain, or child parachain.
+	/// allychain, or child allychain.
 	fn chain_part(&self) -> Option<MultiLocation>;
 	/// Returns "non-chain" location part.
 	fn non_chain_part(&self) -> Option<MultiLocation>;
 }
 
 fn is_chain_junction(junction: Option<&Junction>) -> bool {
-	matches!(junction, Some(Parachain(_)))
+	matches!(junction, Some(Allychain(_)))
 }
 
 impl Parse for MultiLocation {
 	fn chain_part(&self) -> Option<MultiLocation> {
 		match (self.parents, self.first_interior()) {
-			// sibling parachain
-			(1, Some(Parachain(id))) => Some(MultiLocation::new(1, X1(Parachain(*id)))),
+			// sibling allychain
+			(1, Some(Allychain(id))) => Some(MultiLocation::new(1, X1(Allychain(*id)))),
 			// parent
 			(1, _) => Some(MultiLocation::parent()),
-			// children parachain
-			(0, Some(Parachain(id))) => Some(MultiLocation::new(0, X1(Parachain(*id)))),
+			// children allychain
+			(0, Some(Allychain(id))) => Some(MultiLocation::new(0, X1(Allychain(*id)))),
 			_ => None,
 		}
 	}
@@ -56,12 +56,12 @@ impl Reserve for MultiAsset {
 }
 
 pub trait RelativeLocations {
-	fn sibling_parachain_general_key(para_id: u32, general_key: Vec<u8>) -> MultiLocation;
+	fn sibling_allychain_general_key(para_id: u32, general_key: Vec<u8>) -> MultiLocation;
 }
 
 impl RelativeLocations for MultiLocation {
-	fn sibling_parachain_general_key(para_id: u32, general_key: Vec<u8>) -> MultiLocation {
-		MultiLocation::new(1, X2(Parachain(para_id), GeneralKey(general_key)))
+	fn sibling_allychain_general_key(para_id: u32, general_key: Vec<u8>) -> MultiLocation {
+		MultiLocation::new(1, X2(Allychain(para_id), GeneralKey(general_key)))
 	}
 }
 
@@ -69,7 +69,7 @@ impl RelativeLocations for MultiLocation {
 mod tests {
 	use super::*;
 
-	const PARACHAIN: Junction = Parachain(1);
+	const ALLYCHAIN: Junction = Allychain(1);
 	const GENERAL_INDEX: Junction = GeneralIndex(1);
 
 	fn concrete_fungible(id: MultiLocation) -> MultiAsset {
@@ -85,25 +85,25 @@ mod tests {
 	}
 
 	#[test]
-	fn sibling_parachain_as_reserve_chain() {
+	fn sibling_allychain_as_reserve_chain() {
 		assert_eq!(
-			concrete_fungible(MultiLocation::new(1, X2(PARACHAIN, GENERAL_INDEX))).reserve(),
-			Some(MultiLocation::new(1, X1(PARACHAIN)))
+			concrete_fungible(MultiLocation::new(1, X2(ALLYCHAIN, GENERAL_INDEX))).reserve(),
+			Some(MultiLocation::new(1, X1(ALLYCHAIN)))
 		);
 	}
 
 	#[test]
-	fn child_parachain_as_reserve_chain() {
+	fn child_allychain_as_reserve_chain() {
 		assert_eq!(
-			concrete_fungible(MultiLocation::new(0, X2(PARACHAIN, GENERAL_INDEX))).reserve(),
-			Some(PARACHAIN.into())
+			concrete_fungible(MultiLocation::new(0, X2(ALLYCHAIN, GENERAL_INDEX))).reserve(),
+			Some(ALLYCHAIN.into())
 		);
 	}
 
 	#[test]
 	fn no_reserve_chain() {
 		assert_eq!(
-			concrete_fungible(MultiLocation::new(0, X1(GeneralKey("DOT".into())))).reserve(),
+			concrete_fungible(MultiLocation::new(0, X1(GeneralKey("AXC".into())))).reserve(),
 			None
 		);
 	}
@@ -111,8 +111,8 @@ mod tests {
 	#[test]
 	fn non_chain_part_works() {
 		assert_eq!(MultiLocation::parent().non_chain_part(), None);
-		assert_eq!(MultiLocation::new(1, X1(PARACHAIN)).non_chain_part(), None);
-		assert_eq!(MultiLocation::new(0, X1(PARACHAIN)).non_chain_part(), None);
+		assert_eq!(MultiLocation::new(1, X1(ALLYCHAIN)).non_chain_part(), None);
+		assert_eq!(MultiLocation::new(0, X1(ALLYCHAIN)).non_chain_part(), None);
 
 		assert_eq!(
 			MultiLocation::new(1, X1(GENERAL_INDEX)).non_chain_part(),
@@ -123,11 +123,11 @@ mod tests {
 			Some((GENERAL_INDEX, GENERAL_INDEX).into())
 		);
 		assert_eq!(
-			MultiLocation::new(1, X2(PARACHAIN, GENERAL_INDEX)).non_chain_part(),
+			MultiLocation::new(1, X2(ALLYCHAIN, GENERAL_INDEX)).non_chain_part(),
 			Some(GENERAL_INDEX.into())
 		);
 		assert_eq!(
-			MultiLocation::new(0, X2(PARACHAIN, GENERAL_INDEX)).non_chain_part(),
+			MultiLocation::new(0, X2(ALLYCHAIN, GENERAL_INDEX)).non_chain_part(),
 			Some(GENERAL_INDEX.into())
 		);
 	}

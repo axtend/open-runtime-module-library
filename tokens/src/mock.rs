@@ -21,7 +21,7 @@ pub type AccountId = AccountId32;
 pub type CurrencyId = u32;
 pub type Balance = u64;
 
-pub const DOT: CurrencyId = 1;
+pub const AXC: CurrencyId = 1;
 pub const BTC: CurrencyId = 2;
 pub const ETH: CurrencyId = 3;
 pub const ALICE: AccountId = AccountId32::new([0u8; 32]);
@@ -107,7 +107,7 @@ parameter_types! {
 	pub const SpendPeriod: u64 = 2;
 	pub const Burn: Permill = Permill::from_percent(50);
 	pub const TreasuryPalletId: PalletId = PalletId(*b"py/trsry");
-	pub const GetTokenId: CurrencyId = DOT;
+	pub const GetTokenId: CurrencyId = AXC;
 	pub const MaxApprovals: u32 = 100;
 }
 
@@ -218,7 +218,7 @@ parameter_type_with_key! {
 		#[allow(clippy::match_ref_pats)] // false positive
 		match currency_id {
 			&BTC => 1,
-			&DOT => 2,
+			&AXC => 2,
 			_ => 0,
 		}
 	};

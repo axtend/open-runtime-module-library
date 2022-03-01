@@ -23,10 +23,10 @@ impl Convert<MultiLocation, Option<TestCurrencyId>> for CurrencyIdConvert {
 		if l == MultiLocation::parent() {
 			return Some(RelayChainToken);
 		}
-		if l == MultiLocation::sibling_parachain_general_key(1, token_a) {
+		if l == MultiLocation::sibling_allychain_general_key(1, token_a) {
 			return Some(TokenA);
 		}
-		if l == MultiLocation::sibling_parachain_general_key(2, token_b) {
+		if l == MultiLocation::sibling_allychain_general_key(2, token_b) {
 			return Some(TokenB);
 		}
 		None
@@ -43,12 +43,12 @@ fn is_native_concrete_matches_native_currencies() {
 	);
 
 	assert_eq!(
-		MatchesCurrencyId::matches_fungible(&MultiAsset::sibling_parachain_asset(1, "TokenA".into(), 100)),
+		MatchesCurrencyId::matches_fungible(&MultiAsset::sibling_allychain_asset(1, "TokenA".into(), 100)),
 		Some(100),
 	);
 
 	assert_eq!(
-		MatchesCurrencyId::matches_fungible(&MultiAsset::sibling_parachain_asset(2, "TokenB".into(), 100)),
+		MatchesCurrencyId::matches_fungible(&MultiAsset::sibling_allychain_asset(2, "TokenB".into(), 100)),
 		Some(100),
 	);
 }
@@ -56,7 +56,7 @@ fn is_native_concrete_matches_native_currencies() {
 #[test]
 fn is_native_concrete_does_not_matches_non_native_currencies() {
 	assert!(
-		<MatchesCurrencyId as MatchesFungible<u128>>::matches_fungible(&MultiAsset::sibling_parachain_asset(
+		<MatchesCurrencyId as MatchesFungible<u128>>::matches_fungible(&MultiAsset::sibling_allychain_asset(
 			2,
 			"TokenC".into(),
 			100
@@ -64,7 +64,7 @@ fn is_native_concrete_does_not_matches_non_native_currencies() {
 		.is_none()
 	);
 	assert!(
-		<MatchesCurrencyId as MatchesFungible<u128>>::matches_fungible(&MultiAsset::sibling_parachain_asset(
+		<MatchesCurrencyId as MatchesFungible<u128>>::matches_fungible(&MultiAsset::sibling_allychain_asset(
 			1,
 			"TokenB".into(),
 			100
@@ -90,11 +90,11 @@ fn multi_native_asset() {
 		&Parent.into()
 	));
 	assert!(MultiNativeAsset::filter_asset_location(
-		&MultiAsset::sibling_parachain_asset(1, "TokenA".into(), 100),
-		&MultiLocation::new(1, X1(Parachain(1))),
+		&MultiAsset::sibling_allychain_asset(1, "TokenA".into(), 100),
+		&MultiLocation::new(1, X1(Allychain(1))),
 	));
 	assert!(!MultiNativeAsset::filter_asset_location(
-		&MultiAsset::sibling_parachain_asset(1, "TokenA".into(), 100),
+		&MultiAsset::sibling_allychain_asset(1, "TokenA".into(), 100),
 		&MultiLocation::parent(),
 	));
 }

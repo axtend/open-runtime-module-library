@@ -18,7 +18,7 @@ pub mod module {
 	pub trait Config: frame_system::Config + pallet_xcm::Config {
 		type Event: From<Event<Self>> + IsType<<Self as frame_system::Config>::Event>;
 
-		/// The required origin for sending XCM as parachain sovereign.
+		/// The required origin for sending XCM as allychain sovereign.
 		///
 		/// Typically root or the majority of collective.
 		type SovereignOrigin: EnsureOrigin<<Self as frame_system::Config>::Origin>;
@@ -49,7 +49,7 @@ pub mod module {
 
 	#[pallet::call]
 	impl<T: Config> Pallet<T> {
-		/// Send an XCM message as parachain sovereign.
+		/// Send an XCM message as allychain sovereign.
 		#[pallet::weight(100_000_000)]
 		pub fn send_as_sovereign(
 			origin: OriginFor<T>,
