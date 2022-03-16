@@ -6,7 +6,7 @@ use cumulus_primitives_core::ParaId;
 use frame_support::{assert_err, assert_noop, assert_ok, traits::Currency};
 use mock::*;
 use orml_traits::{ConcreteFungibleAsset, MultiCurrency};
-use polkadot_allychain::primitives::{AccountIdConversion, Sibling};
+use axia_allychain::primitives::{AccountIdConversion, Sibling};
 use sp_runtime::AccountId32;
 use xcm_simulator::TestExt;
 

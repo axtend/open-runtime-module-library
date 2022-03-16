@@ -37,13 +37,13 @@ cumulus-pallet-xcmp-queue = { git = "https://github.com/axtend/cumulus", branch 
 cumulus-pallet-xcm = { git = "https://github.com/axtend/cumulus", branch = "b43fcff" }
 allychain-info = { git = "https://github.com/axtend/cumulus", branch = "b43fcff" }
 
-# polkadot
-polkadot-allychain = { git = "https://github.com/axtend/axia", branch = "66cb46b" }
+# axia
+axia-allychain = { git = "https://github.com/axtend/axia", branch = "66cb46b" }
 xcm = { git = "https://github.com/axtend/axia", branch = "66cb46b" }
 xcm-executor = { git = "https://github.com/axtend/axia", branch = "66cb46b" }
 xcm-builder = { git = "https://github.com/axtend/axia", branch = "66cb46b" }
 pallet-xcm = { git = "https://github.com/axtend/axia", branch = "66cb46b" }
-polkadot-runtime-allychains = { git = "https://github.com/axtend/axia", branch = "66cb46b" }
+axia-runtime-allychains = { git = "https://github.com/axtend/axia", branch = "66cb46b" }
 xcm-simulator = { git = "https://github.com/axtend/axia", branch = "66cb46b"}
 
 orml-tokens = { path = "../tokens" }

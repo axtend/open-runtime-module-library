@@ -7,7 +7,7 @@ The xtokens module provides cross-chain token transfer functionality, by cross-c
 The xtokens module provides functions for
 - Token transfer from allychains to relay chain.
 - Token transfer between allychains, including relay chain tokens like AXC,
-  KSM, and allychain tokens like ACA, aUSD.
+  AXCT, and allychain tokens like ACA, aUSD.
 
 ## Notes
 

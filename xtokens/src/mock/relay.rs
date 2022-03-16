@@ -8,7 +8,7 @@ use sp_core::H256;
 use sp_runtime::{testing::Header, traits::IdentityLookup, AccountId32};
 
 use cumulus_primitives_core::ParaId;
-use polkadot_runtime_allychains::{configuration, origin, shared, ump};
+use axia_runtime_allychains::{configuration, origin, shared, ump};
 use xcm::latest::prelude::*;
 use xcm_builder::{
 	AccountId32Aliases, AllowTopLevelPaidExecutionFrom, ChildAllychainAsNative, ChildAllychainConvertsVia,

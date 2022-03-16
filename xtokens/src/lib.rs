@@ -8,7 +8,7 @@
 //! The xtokens module provides functions for
 //! - Token transfer from allychains to relay chain.
 //! - Token transfer between allychains, including relay chain tokens like AXC,
-//!   KSM, and allychain tokens like ACA, aUSD.
+//!   AXCT, and allychain tokens like ACA, aUSD.
 //!
 //! ## Interface
 //!
@@ -161,7 +161,7 @@ pub mod module {
 		NotCrossChainTransferableCurrency,
 		/// The message's weight could not be determined.
 		UnweighableMessage,
-		// TODO: expand into XcmExecutionFailed(XcmError) after https://github.com/paritytech/axlib/pull/10242 done
+		// TODO: expand into XcmExecutionFailed(XcmError) after https://github.com/axiatech/axlib/pull/10242 done
 		/// XCM execution failed.
 		XcmExecutionFailed,
 		/// Could not re-anchor the assets to declare the fees for the

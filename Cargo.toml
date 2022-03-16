@@ -29,7 +29,7 @@ resolver = "2"
 [profile.dev]
 split-debuginfo = "unpacked"
 
-[patch.'https://github.com/paritytech/axlib']
+[patch.'https://github.com/axiatech/axlib']
 frame-benchmarking = { git = "https://github.com/axtend/axlib", branch = "c92f69d" }
 frame-support = { git = "https://github.com/axtend/axlib", branch = "c92f69d" }
 frame-system = { git = "https://github.com/axtend/axlib", branch = "c92f69d" }
@@ -78,20 +78,20 @@ sp-trie = { git = "https://github.com/axtend/axlib", branch = "c92f69d" }
 sp-version = { git = "https://github.com/axtend/axlib", branch = "c92f69d" }
 sp-wasm-interface = { git = "https://github.com/axtend/axlib", branch = "c92f69d" }
 
-[patch.'https://github.com/paritytech/cumulus']
+[patch.'https://github.com/axiatech/cumulus']
 cumulus-primitives-core = { git = "https://github.com/axtend/cumulus", branch = "b43fcff" }
 allychain-info = { git = "https://github.com/axtend/cumulus", branch = "b43fcff" }
 cumulus-pallet-dmp-queue = { git = "https://github.com/axtend/cumulus", branch = "b43fcff" }
 cumulus-pallet-xcmp-queue = { git = "https://github.com/axtend/cumulus", branch = "b43fcff" }
 cumulus-pallet-xcm = { git = "https://github.com/axtend/cumulus", branch = "b43fcff" }
 
-[patch.'https://github.com/paritytech/polkadot']
+[patch.'https://github.com/axiatech/axia']
 xcm = { git = "https://github.com/axtend/axia", branch = "66cb46b" }
 xcm-executor = { git = "https://github.com/axtend/axia", branch = "66cb46b" }
 xcm-builder = { git = "https://github.com/axtend/axia", branch = "66cb46b" }
 pallet-xcm = { git = "https://github.com/axtend/axia", branch = "66cb46b" }
-polkadot-core-primitives = { git = "https://github.com/axtend/axia", branch = "66cb46b" }
-polkadot-runtime-allychains = { git = "https://github.com/axtend/axia", branch = "66cb46b" }
-polkadot-allychain = { git = "https://github.com/axtend/axia", branch = "66cb46b" }
-polkadot-primitives = { git = "https://github.com/axtend/axia", branch = "66cb46b" }
+axia-core-primitives = { git = "https://github.com/axtend/axia", branch = "66cb46b" }
+axia-runtime-allychains = { git = "https://github.com/axtend/axia", branch = "66cb46b" }
+axia-allychain = { git = "https://github.com/axtend/axia", branch = "66cb46b" }
+axia-primitives = { git = "https://github.com/axtend/axia", branch = "66cb46b" }
 xcm-simulator = { git = "https://github.com/axtend/axia", branch = "66cb46b" }
