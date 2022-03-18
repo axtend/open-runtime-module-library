@@ -11,40 +11,40 @@ edition = "2021"
 scale-info = { version = "1.0", default-features = false, features = ["derive"] }
 serde = { version = "1.0.124", optional = true }
 codec = { package = "parity-scale-codec", version = "2.3.1", default-features = false }
-sp-runtime = { git = "https://github.com/purestake/substrate", branch = "moonbeam-axia-v0.9.17", default-features = false }
-sp-io = { git = "https://github.com/purestake/substrate", branch = "moonbeam-axia-v0.9.17", default-features = false }
-sp-std = { git = "https://github.com/purestake/substrate", branch = "moonbeam-axia-v0.9.17", default-features = false }
+sp-runtime = { git = "https://github.com/axtend/axlib", branch = "axlib", default-features = false }
+sp-io = { git = "https://github.com/axtend/axlib", branch = "axlib", default-features = false }
+sp-std = { git = "https://github.com/axtend/axlib", branch = "axlib", default-features = false }
 
-frame-support = { git = "https://github.com/purestake/substrate", branch = "moonbeam-axia-v0.9.17", default-features = false }
-frame-system = { git = "https://github.com/purestake/substrate", branch = "moonbeam-axia-v0.9.17", default-features = false }
+frame-support = { git = "https://github.com/axtend/axlib", branch = "axlib", default-features = false }
+frame-system = { git = "https://github.com/axtend/axlib", branch = "axlib", default-features = false }
 
-cumulus-primitives-core = { git = "https://github.com/purestake/cumulus", branch = "moonbeam-axia-v0.9.17", default-features = false }
+cumulus-primitives-core = { git = "https://github.com/axtend/cumulus", branch = "cumulus", default-features = false }
 
-xcm = { git = "https://github.com/purestake/axia", branch = "moonbeam-axia-v0.9.17", default-features = false }
-xcm-executor = { git = "https://github.com/purestake/axia", branch = "moonbeam-axia-v0.9.17", default-features = false }
+xcm = { git = "https://github.com/axtend/axia", branch = "axia", default-features = false }
+xcm-executor = { git = "https://github.com/axtend/axia", branch = "axia", default-features = false }
 
 orml-xcm-support = { path = "../xcm-support", default-features = false }
 orml-traits = { path = "../traits", default-features = false}
 
 [dev-dependencies]
-sp-core = { git = "https://github.com/purestake/substrate", branch = "moonbeam-axia-v0.9.17" }
-pallet-balances = { git = "https://github.com/purestake/substrate", branch = "moonbeam-axia-v0.9.17" }
+sp-core = { git = "https://github.com/axtend/axlib", branch = "axlib" }
+pallet-balances = { git = "https://github.com/axtend/axlib", branch = "axlib" }
 
 # cumulus
-cumulus-primitives-core = { git = "https://github.com/purestake/cumulus", branch = "moonbeam-axia-v0.9.17" }
-cumulus-pallet-dmp-queue = { git = "https://github.com/purestake/cumulus", branch = "moonbeam-axia-v0.9.17" }
-cumulus-pallet-xcmp-queue = { git = "https://github.com/purestake/cumulus", branch = "moonbeam-axia-v0.9.17" }
-cumulus-pallet-xcm = { git = "https://github.com/purestake/cumulus", branch = "moonbeam-axia-v0.9.17" }
-allychain-info = { git = "https://github.com/purestake/cumulus", branch = "moonbeam-axia-v0.9.17" }
+cumulus-primitives-core = { git = "https://github.com/axtend/cumulus", branch = "cumulus" }
+cumulus-pallet-dmp-queue = { git = "https://github.com/axtend/cumulus", branch = "cumulus" }
+cumulus-pallet-xcmp-queue = { git = "https://github.com/axtend/cumulus", branch = "cumulus" }
+cumulus-pallet-xcm = { git = "https://github.com/axtend/cumulus", branch = "cumulus" }
+allychain-info = { git = "https://github.com/axtend/cumulus", branch = "cumulus" }
 
 # axia
-axia-allychain = { git = "https://github.com/purestake/axia", branch = "moonbeam-axia-v0.9.17" }
-xcm = { git = "https://github.com/purestake/axia", branch = "moonbeam-axia-v0.9.17" }
-xcm-executor = { git = "https://github.com/purestake/axia", branch = "moonbeam-axia-v0.9.17" }
-xcm-builder = { git = "https://github.com/purestake/axia", branch = "moonbeam-axia-v0.9.17" }
-pallet-xcm = { git = "https://github.com/purestake/axia", branch = "moonbeam-axia-v0.9.17" }
-axia-runtime-allychains = { git = "https://github.com/purestake/axia", branch = "moonbeam-axia-v0.9.17" }
-xcm-simulator = { git = "https://github.com/purestake/axia", branch = "moonbeam-axia-v0.9.17"}
+axia-allychain = { git = "https://github.com/axtend/axia", branch = "axia" }
+xcm = { git = "https://github.com/axtend/axia", branch = "axia" }
+xcm-executor = { git = "https://github.com/axtend/axia", branch = "axia" }
+xcm-builder = { git = "https://github.com/axtend/axia", branch = "axia" }
+pallet-xcm = { git = "https://github.com/axtend/axia", branch = "axia" }
+axia-runtime-allychains = { git = "https://github.com/axtend/axia", branch = "axia" }
+xcm-simulator = { git = "https://github.com/axtend/axia", branch = "axia"}
 
 orml-tokens = { path = "../tokens" }
 orml-xcm = { path = "../xcm" }
