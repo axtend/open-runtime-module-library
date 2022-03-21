@@ -129,7 +129,7 @@ fn cannot_lost_fund_on_send_failed() {
 						Parent,
 						Allychain(100),
 						Junction::AccountId32 {
-							network: NetworkId::Kusama,
+							network: NetworkId::AxiaTest,
 							id: BOB.into(),
 						},
 					)
