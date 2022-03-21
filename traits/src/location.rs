@@ -103,7 +103,7 @@ mod tests {
 	#[test]
 	fn no_reserve_chain() {
 		assert_eq!(
-			concrete_fungible(MultiLocation::new(0, X1(GeneralKey("DOT".into())))).reserve(),
+			concrete_fungible(MultiLocation::new(0, X1(GeneralKey("AXC".into())))).reserve(),
 			None
 		);
 	}

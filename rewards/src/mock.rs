@@ -21,7 +21,7 @@ pub type CurrencyId = u32;
 pub const ALICE: AccountId = 1;
 pub const BOB: AccountId = 2;
 pub const CAROL: AccountId = 3;
-pub const DOT_POOL: PoolId = 1;
+pub const AXC_POOL: PoolId = 1;
 pub const NATIVE_COIN: CurrencyId = 0;
 pub const STABLE_COIN: CurrencyId = 1;
 
