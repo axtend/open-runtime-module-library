@@ -10,7 +10,7 @@ use sp_state_machine::{Ext, OverlayedChanges, StorageTransactionCache};
 use sp_std::sync::Arc;
 
 type ComposeHostFunctions = (
-	sp_io::SubstrateHostFunctions,
+	sp_io::AxlibHostFunctions,
 	frame_benchmarking::benchmarking::HostFunctions,
 	super::bench::HostFunctions,
 );

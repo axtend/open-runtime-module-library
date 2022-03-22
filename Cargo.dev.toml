@@ -29,7 +29,7 @@ resolver = "2"
 [profile.dev]
 split-debuginfo = "unpacked"
 
-[patch.'https://github.com/paritytech/substrate']
+[patch.'https://github.com/paritytech/axlib']
 frame-benchmarking = { git = "https://github.com/axtend/axlib", branch = "axlib" }
 frame-support = { git = "https://github.com/axtend/axlib", branch = "axlib" }
 frame-system = { git = "https://github.com/axtend/axlib", branch = "axlib" }

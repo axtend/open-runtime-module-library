@@ -4,7 +4,7 @@ use std::process::Command;
 /// Generate the `cargo:` key output
 pub fn generate_cargo_keys() {
 	println!(
-		"cargo:rustc-env=SUBSTRATE_CLI_IMPL_VERSION={}",
+		"cargo:rustc-env=AXLIB_CLI_IMPL_VERSION={}",
 		get_version(get_commit())
 	)
 }
