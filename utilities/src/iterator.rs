@@ -9,7 +9,7 @@ use frame_support::{
 use sp_std::prelude::*;
 
 /// Utility to iterate through items in a storage map.
-/// Forks from axlib, expose previous_key field
+/// Forks from substrate, expose previous_key field
 pub struct StorageMapIterator<K, V, Hasher> {
 	prefix: Vec<u8>,
 	pub previous_key: Vec<u8>,
@@ -17,7 +17,7 @@ pub struct StorageMapIterator<K, V, Hasher> {
 	_phantom: sp_std::marker::PhantomData<(K, V, Hasher)>,
 }
 
-/// Forks from axlib
+/// Forks from substrate
 impl<K: Decode + Sized, V: Decode + Sized, Hasher: ReversibleStorageHasher> Iterator
 	for StorageMapIterator<K, V, Hasher>
 {
@@ -141,7 +141,7 @@ where
 }
 
 /// Iterate over a prefix and decode raw_key and raw_value into `T`.
-/// Forks from axlib, expose previous_key field
+/// Forks from substrate, expose previous_key field
 pub struct MapIterator<T> {
 	prefix: Vec<u8>,
 	pub previous_key: Vec<u8>,
@@ -153,7 +153,7 @@ pub struct MapIterator<T> {
 	closure: fn(&[u8], &[u8]) -> Result<T, codec::Error>,
 }
 
-/// Forks from axlib
+/// Forks from substrate
 impl<T> Iterator for MapIterator<T> {
 	type Item = T;
 

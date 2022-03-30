@@ -6,7 +6,7 @@ use sp_std::result::Result;
 
 #[deprecated(
 	since = "0.4.1",
-	note = "iterator module's functionality is now available in axlib's frame-support"
+	note = "iterator module's functionality is now available in substrate's frame-support"
 )]
 pub mod iterator;
 pub mod offchain_worker;

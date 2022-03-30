@@ -29,7 +29,7 @@ resolver = "2"
 [profile.dev]
 split-debuginfo = "unpacked"
 
-[patch.'https://github.com/paritytech/axlib']
+[patch.'https://github.com/axiatech/substrate']
 frame-benchmarking = { git = "https://github.com/axtend/axlib", branch = "axlib" }
 frame-support = { git = "https://github.com/axtend/axlib", branch = "axlib" }
 frame-system = { git = "https://github.com/axtend/axlib", branch = "axlib" }
@@ -78,14 +78,14 @@ sp-trie = { git = "https://github.com/axtend/axlib", branch = "axlib" }
 sp-version = { git = "https://github.com/axtend/axlib", branch = "axlib" }
 sp-wasm-interface = { git = "https://github.com/axtend/axlib", branch = "axlib" }
 
-[patch.'https://github.com/paritytech/cumulus']
+[patch.'https://github.com/axiatech/cumulus']
 cumulus-primitives-core = { git = "https://github.com/axtend/cumulus", branch = "cumulus" }
 allychain-info = { git = "https://github.com/axtend/cumulus", branch = "cumulus" }
 cumulus-pallet-dmp-queue = { git = "https://github.com/axtend/cumulus", branch = "cumulus" }
 cumulus-pallet-xcmp-queue = { git = "https://github.com/axtend/cumulus", branch = "cumulus" }
 cumulus-pallet-xcm = { git = "https://github.com/axtend/cumulus", branch = "cumulus" }
 
-[patch.'https://github.com/paritytech/axia']
+[patch.'https://github.com/axiatech/axia']
 xcm = { git = "https://github.com/axtend/axia", branch = "axia" }
 xcm-executor = { git = "https://github.com/axtend/axia", branch = "axia" }
 xcm-builder = { git = "https://github.com/axtend/axia", branch = "axia" }
